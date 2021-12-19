@@ -1,0 +1,358 @@
+:root {
+  --color: #a0f;
+  --blade-mask: conic-gradient(from 0deg at 70% 45%, transparent 0 60%, #fff 60% 80%, transparent 80% 100%);;
+  --metal-color: #9D9DAA;
+  --metal-color-dark: #7C7F89;
+  --white-shine: #fff5;
+
+  --border-color: #222;
+  --border-filter-size: 10px;
+
+  --semi-logo-color: #6D6D76;
+  --semi-logo-size: 1px;
+  --semi-logo-filter:
+    drop-shadow(0 0 1px var(--semi-logo-color))
+    drop-shadow(0 var(--semi-logo-size) 0 var(--semi-logo-color))
+    drop-shadow(var(--semi-logo-size) 0 0 var(--semi-logo-color))
+    drop-shadow(0 calc(-1 * var(--semi-logo-size)) 0 var(--semi-logo-color))
+    drop-shadow(calc(-1 * var(--semi-logo-size)) 0 0 var(--semi-logo-color));
+  --border-filter:
+    drop-shadow(0 0 1px var(--border-color))
+    drop-shadow(0 var(--border-filter-size) 0 var(--border-color))
+    drop-shadow(var(--border-filter-size) 0 0 var(--border-color))
+    drop-shadow(0 calc(-1 * var(--border-filter-size)) 0 var(--border-color))
+    drop-shadow(calc(-1 * var(--border-filter-size)) 0 0 var(--border-color));
+}
+
+body {
+  margin: 0;
+  background: #223;
+}
+
+.container {
+  --width: 550px;
+  --height: 825px;
+
+  width: var(--width);
+  height: var(--height);
+  margin: 3em auto;
+}
+
+.stormbreaker {
+  width: var(--width);
+  height: var(--height);
+  position: relative;
+  animation: stormbreaker 0.5s ease infinite alternate;
+
+  & .blade-container {
+    --width: 500px;
+    --height: 350px;
+
+    width: var(--width);
+    height: var(--height);
+    filter: var(--border-filter);
+    position: relative;
+    z-index: 5;
+
+    & .blade {
+      --blade-crack-shape: polygon(0 0, 100% 0, 100% 100%, 29% 100%, 23% 92%, 24% 83%, 9% 87%, 0 100%);
+
+      width: var(--widht);
+      height: var(--width);
+      background-color: var(--metal-color);
+      background-image:
+        conic-gradient(from 287deg at 60% 43%, #fff 0% 50%, #fff8 0% 75%, transparent),
+        linear-gradient(126deg, transparent 0 35%, var(--white-shine) 35% 45%, transparent 45% 48%, var(--white-shine) 48% 51%, transparent 51% 100%),
+        radial-gradient(transparent 0% 49%, var(--border-color) 49% 50%, var(--metal-color-dark) 50.25% 100%);
+      border-radius: 50%;
+      -webkit-mask-image: var(--blade-mask);
+      transform: translateY(-125px);
+      box-shadow: 20px 6px 0 #fff inset;
+      clip-path: var(--blade-crack-shape);
+      position: relative;
+    }
+
+    & .crack {
+      background: var(--border-color);
+      width: 30px;
+      height: 60px;
+      position: absolute;
+      top: 20px;
+      left: 60px;
+      z-index: 10;
+      clip-path: polygon(50% 0, 0 35%, 100% 100%, 40% 35%, 100% 0);
+      transform: translate(95px, 23px) rotate(15deg);
+    }
+
+    & .crack-2 {
+      top: auto;
+      bottom: 0;
+      clip-path: polygon(50% 15%, 0 35%, 100% 100%, 40% 35%, 100% 15%);
+      transform: translate(136px, -74px) rotate(15deg) scale(-1);
+    }
+
+    & .crack-3 {
+      width: 20px;
+      height: 100px;
+      top: auto;
+      bottom: 0;
+      transform: translate(110px, -50px) rotate(125deg) scaleX(-1);
+    }
+
+    & .axe-junction {
+      background: var(--metal-color);
+      width: 50px;
+      height: 220px;
+      border-radius: 40px / 10px;
+      transform: translate(300px, -490px) rotate(-10deg);
+    }
+
+    & .mallet {
+      background-color: var(--metal-color);
+      background-image: linear-gradient(136deg, transparent 0 55%, var(--white-shine) 55% 70%, transparent 70% 75%, var(--white-shine) 75% 80%, transparent 80% 100%);
+      width: 200px;
+      height: 120px;
+      position: absolute;
+      top: 0;
+      border-radius: 20px / 10px;
+      transform: translate(300px, 45px) rotate(-10deg);
+    }
+
+    & .semi-logo-container {
+      width: 400px;
+      height: 50px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(0, 132px) rotate(-10deg);
+      filter: var(--semi-logo-filter);
+
+
+      &.top {
+        transform: translate(-10px, 65px) rotate(-10deg) scaleY(-1);
+      }
+
+      & .semi-logo {
+        width: 100%;
+        height: 100%;
+        background: #D4D6DB;
+        box-shadow: 0 4px 0 #fff inset;
+        clip-path: polygon(0 0, 38% 0, 54% 70%, 60% 70%, 70% 0, 100% 0, 100% 100%, 96% 100%, 96% 27%, 71% 27%, 61% 90%, 52% 90%, 37% 27%, 0 27%);
+      }
+    }
+  }
+
+  & .merge-group {
+    width: 125px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    transform: translate(265px, 35px) rotate(-10deg);
+    display: flex;
+    justify-content: center;
+
+    & .merge-point {
+      filter: var(--border-filter);
+      width: 20%;
+      height: 85%;
+      background: linear-gradient(-90deg, #946535 0 20%, #CDAB7B 20% 60%, #E2D2B8 60% 90%, #FCFFFE 90% 100%);
+      border-radius: 30%;
+      position: absolute;
+
+      &:first-child { transform: rotate(-30deg); }
+      &:last-child { transform: rotate(28deg); }
+    }
+  }
+
+  & .handle-container {
+    --width: 45px;
+    --height: 700px;
+    width: var(--width);
+    height: var(--height);
+    position: absolute;
+    top: 0;
+    transform: translate(370px, 150px) rotate(-10deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    filter: var(--border-filter);
+
+    & .handle-top {
+      width: 100%;
+      height: 575px;
+      background: linear-gradient(-90deg, #946535 0 20%, #CDAB7B 20% 60%, #E2D2B8 60% 90%, #FCFFFE 90% 100%);
+      border-radius: 6px;
+    }
+
+    & .handle-middle {
+      width: 95%;
+      height: 100px;
+      background: linear-gradient(-87deg , #946535 0 20%, #CDAB7B 20% 60%, #E2D2B8 60% 90%, #FCFFFE 90% 100%);
+      border-bottom-left-radius: 6px;
+      transform: translate(8px, -16px) rotate(-12deg);
+    }
+
+    & .handle-bottom {
+      width: 110%;
+      height: 60px;
+      background: linear-gradient(-94deg , #946535 0 20%, #CDAB7B 20% 60%, #E2D2B8 60% 90%, #FCFFFE 90% 100%);
+      transform: translate(20px, -20px) rotate(-16deg);
+      clip-path: polygon(20% 0, 100% 0, 100% 100%, 50% 80%);
+    }
+
+    & .crack-group {
+      width: 100%;
+      height: 70%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      & .crack-1 {
+        background: var(--border-color);
+        width: 10px;
+        height: 100px;
+        transform: rotate(2deg) scaleY(-1);
+        position: absolute;
+        clip-path: polygon(0 0, 80% 40%, 0 100%, 20% 40%);
+        bottom: 10px;
+        right: 4px;
+      }
+
+      & .crack-2 {
+        background: var(--border-color);
+        width: 20px;
+        height: 100px;
+        transform: translate(-7px, -12px) rotate(-10deg) scaleX(-1);
+        clip-path: polygon(0 100%, 50% 25%, 0 0, 100% 35%);
+        position: absolute;
+        right: 0;
+        top: 80px;
+      }
+
+      & .crack-3 {
+        background: var(--border-color);
+        width: 30px;
+        height: 180px;
+        transform: translate(22px, -55px) rotate(2deg) scale(-1);
+        clip-path: polygon(20% 50%, 50% 25%, 50% 0, 60% 35%);
+      }
+
+      & .crack-4 {
+        background: var(--border-color);
+        width: 20px;
+        height: 150px;
+        position: absolute;
+        transform: translate(8px, -5px) rotate(7deg) scale(-1);
+        clip-path: polygon(0 100%, 50% 25%, 0 0, 100% 35%);
+        top: 220px;
+        left: 0px;
+      }
+    }
+  }
+
+
+  & .rope-group {
+    width: 80px;
+    height: 120px;
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px 0;
+
+    &.group-1 { transform: translate(-140px, -400px) rotate(-10deg); }
+    &.group-2 { transform: translate(-62px, -20px) rotate(-20deg); }
+
+    & .rope {
+      width: 100%;
+      height: 10px;
+      border-radius: 20px;
+      background: var(--border-color);
+      transform: rotate(var(--rotate));
+    }
+
+    & .rope-1 { --rotate: 10deg }
+    & .rope-2 { --rotate: -4deg }
+    & .rope-3 { --rotate: 6deg }
+    & .rope-4 { --rotate: 0deg }
+    & .rope-5 { --rotate: -6deg }
+    & .rope-6 { --rotate: 6deg }
+    & .rope-7 { --rotate: -2deg }
+    & .rope-8 { --rotate: -10deg }
+
+    &.group-1 :is(.rope-2, .rope-5) { --rotate: 10deg }
+    &.group-1 :is(.rope-3, .rope-6) { --rotate: -10deg }
+  }
+
+}
+
+@keyframes stormbreaker {
+  from {
+    filter:
+      drop-shadow(1px 1px 5px #fff)
+      drop-shadow(-1px -1px 5px #fff)
+      drop-shadow(1px 1px 5px #008ACC)
+      drop-shadow(-1px -1px 5px #008ACC)
+      drop-shadow(-1px 1px 5px #008ACC)
+      drop-shadow(1px -1px 5px #008ACC);
+  }
+
+  to {
+    filter:
+      drop-shadow(1px 1px 5px #fff)
+      drop-shadow(-1px -1px 5px #fff)
+      drop-shadow(10px 10px 5px #008ACC55)
+      drop-shadow(-10px -10px 5px #008ACC55)
+      drop-shadow(-10px 10px 5px #008ACC55)
+      drop-shadow(10px -10px 5px #008ACC55);
+  }
+}
+
+.sparkle {
+  --width: 15px;
+  --height: 15px;
+
+  width: var(--width);
+  height: var(--height);
+  background: #fff;
+  clip-path: polygon(0 50%, 30% 30%, 50% 0, 70% 30%, 100% 50%, 70% 70%, 50% 100%, 30% 70%);
+  position: absolute;
+  z-index: 50;
+}
+
+.sparkle-1, .sparkle-2, .sparkle-4 {
+  animation: shine-maxi 5s ease-in-out infinite alternate;
+}
+
+.sparkle-3, .sparkle-5 {
+  animation: shine-jelitter 5s ease-in-out infinite alternate;
+}
+
+.sparkle-1 { top: 0; }
+.sparkle-2 { top: 25%; }
+.sparkle-3 { top: 34%; left: 20.5% }
+.sparkle-4 { top: 4%; left: 32% }
+.sparkle-5 { top: 10%; left: 88% }
+
+@keyframes shine-jelitter {
+  0% { opacity: 0.5; transform: rotate(0deg); }
+  50% { opacity: 1; transform: rotate(360deg); }
+  100% { opacity: 0.5; transform: rotate(720deg); }
+}
+
+@keyframes shine-maxi {
+  0%, 60%, 100% {
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%);
+  }
+  20%, 40% {
+    clip-path: polygon(10% 50%, 40% 40%, 50% 10%, 60% 40%, 90% 50%, 60% 60%, 50% 90%, 40% 60%);
+  }
+
+  30% {
+    clip-path: polygon(0 50%, 30% 30%, 50% 0, 70% 30%, 100% 50%, 70% 70%, 50% 100%, 30% 70%);
+  }
+}
